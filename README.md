@@ -19,12 +19,12 @@ end='' 끝
 \" : "문자
 \ : \문자
 
-###input()
+### input()
 내장함수취급
 사용자의 입력을 받고 → 문자열로 변환 → 추가 strip 진행
 더 이상 입력이 없는데도 수행될 경우 EOFerror를 뱉어
 
-###sys
+### sys
 file object 취급, 따로 buffer
 sys.stdin.readline() - 한줄을 iterable 한 객체에 저장 (개행포함)
 readline(숫자) : 입력받을 만큼 입력받기 가능
@@ -34,7 +34,7 @@ sys.stdin - 여러줄 받으려면
 n = input()
 a = [sys.stdin.readline() for i in range(n)]
 
-###range(start,stop,step)
+### range(start,stop,step)
 - 오름차순일땐 stop-1까지. 내림차순일땐 stop+1까지
   
 *args : 여러개 받고자 할 때
