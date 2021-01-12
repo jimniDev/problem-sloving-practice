@@ -12,9 +12,9 @@
 #최대단위 > n이면 답 =< 최대단위
 #최대단위 < n이면 답 =< n 2222 4 1111 4 1231 4
 # 같으면  합+1이 답 1234 4  1124 4 
+
 n = int(input())
 data = list(map(int, input().split()))
-#data.sort()
 ans = 1
 if max(data) > n:
     for i in range(1, max(data)+1):
@@ -31,21 +31,20 @@ else:
     ans = sum(data)+1
 print(ans)
 
-#45분 t-t
+#t-t
+#문제점: 그리디가 아닌것같애
 
-
-#문제점: 왜그리디적사고를하지않고 구데기로 문제를푸냐?
 #답
 #오름차순정렬 그리디
 # target 만큼 만들수있다 =  1~target-1 까지의 모든 금액 만들수있다 -> 업데이트
 
-n = int(input())
-data = list(map(int, input().split()))
-data.sort()
+# n = int(input())
+# data = list(map(int, input().split()))
+# data.sort()
 
-target = 1
-for x in data:
-    if target < x:
-        break
-    target += x
-print(target)
+# target = 1
+# for x in data:
+#     if target < x:
+#         break
+#     target += x
+# print(target)

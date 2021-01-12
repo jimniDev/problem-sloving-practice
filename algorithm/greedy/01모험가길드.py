@@ -32,16 +32,16 @@ print(group)
 #1 2 2 2 3오름차순 정렬하여 공포도낮은사람부터 묶기
 #최소모험가로 그룹구성 => 최대그룹수
 
-n = int(input())
-a = list(input().split())
-group = 0
-mem = 0
+# n = int(input())
+# a = list(input().split())
+# group = 0
+# mem = 0
 
-for i in a:
-    mem += 1
-    if mem >= i: #현재 그룹의 모험가수가 현재 공포도 이상이면 
-       group += 1 #그룹결성
-       mem = 0 #현재 그룹의 모험가수 초기화
+# for i in a:
+#     mem += 1
+#     if mem >= i: #현재 그룹의 모험가수가 현재 공포도 이상이면 
+#        group += 1 #그룹결성
+#        mem = 0 #현재 그룹의 모험가수 초기화
 
-print(group)
+# print(group)
 
