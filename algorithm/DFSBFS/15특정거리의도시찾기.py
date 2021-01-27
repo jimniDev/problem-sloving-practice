@@ -5,7 +5,7 @@
 # N, M, K, X = map(int, input().split())
 # print(N, M, K, X)
 # graph = [[] for i in range(N+1)]
-# # 와 graph [[]]*N의 차이는 뭐야?
+# # 와 graph [[]]*N의 차이는 뭐야? - 얕은복사됨
 # dis = []
 # visited = [False]*(N+1)
 
