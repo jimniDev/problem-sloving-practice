@@ -1,6 +1,8 @@
 #부품찾기
 #가게부품 N개, 손님이 찾는 부품 M개
 
+#이진탐색, 계수정렬, set함수 사용 - 풀이 3가지
+
 import sys
 
 def binary_search(arr, target, start, end):
