@@ -35,8 +35,11 @@ def binary_right(arr, target, start, end):
 
 start = time.time() 
 
-n, x = map(int, input().split())
-arr = list(map(int, sys.stdin.readline().rstrip().split()))
+# n, x = map(int, input().split())
+# arr = list(map(int, sys.stdin.readline().rstrip().split()))
+
+n, x = 7, 2
+arr = [1, 1, 2, 2, 2, 2, 3]
 
 val = binary_search(arr, x, 0, n-1)
 if val == None:
