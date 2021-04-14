@@ -51,6 +51,3 @@ for i in range(1, N+1):
         check = True
 if check == False:
     print(-1)
-
-#시간초과남
- 
