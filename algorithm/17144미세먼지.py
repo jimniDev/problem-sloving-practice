@@ -7,36 +7,35 @@ m = []
 for _ in range(R):
     m.append(list(map(int, input().split())))
 
-dust = []
 cleaner = -1
 for i in range(R):
     for j in range(C):
-        if m[i][j] > 0:
-            dust.append((i,j))
-        elif m[i][j] == -1:
+        if m[i][j] == -1:
             cleaner = i #아랫칸 행 저장
 
-def spread_dust(m, dust):
+def spread_dust():
+    dust = deque()
     dx = [1,-1,0,0]
     dy = [0,0,1,-1]
 
-    tmp = [[0]* C for _ in range(R)]
-    spreaded = copy.deepcopy(dust)
-    for d in dust:
-        x, y = d
+    for i in range(R):
+        for j in range(C):
+            if m[i][j] > 0:
+                dust.append((i,j, m[i][j]))
+
+    for _ in range(len(dust)):
+        x, y, A = dust.popleft()
         dir_cnt = 0 
         for i in range(4):
             r = x + dx[i]
             c = y + dy[i]
             if 0 <= r < R and 0 <= c < C and m[r][c] != -1:
-                tmp[r][c] += m[x][y]//5
-                spreaded.append((r,c))
+                dust.append((r,c, m[x][y]//5))
                 dir_cnt +=1
-        m[x][y] = m[x][y] - m[x][y]//5*dir_cnt
-    for i in range(R):
-        for j in range(C):
-            m[i][j] += tmp[i][j]
-    return spreaded
+        m[x][y] -= m[x][y]//5*dir_cnt
+    while dust:
+        x, y, A = dust.popleft()
+        m[x][y] += A
 
 def clean_dust(m, cleaner):
     up = cleaner-1
@@ -63,9 +62,8 @@ def clean_dust(m, cleaner):
     m[down][1] = 0
     return m 
 
-spreaded = dust
 for i in range(T):
-    spreaded = spread_dust(m,spreaded)
+    spread_dust()
     m = clean_dust(m, cleaner)
 
 total = 0
