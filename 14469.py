@@ -10,3 +10,4 @@ for i in range(1, len(cow)):
         cur = cow[i][0] + cow[i][1]
 # print(cow)
 print(cur)
+
