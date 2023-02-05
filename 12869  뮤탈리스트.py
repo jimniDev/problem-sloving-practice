@@ -3,7 +3,6 @@ from itertools import permutations
 
 n = int(input())
 scv = list(map(int, input().split()))
-die = [0 for _ in range(n)]
 visited = []
 
 method = list(permutations([-9,-3,-1], 3))
