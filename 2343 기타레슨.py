@@ -26,3 +26,7 @@ while l <= r:
         r = mid -1
 
 print(blueray_len)
+
+# 반례
+# 7 6
+# 100 400 300 100 500 101 400
