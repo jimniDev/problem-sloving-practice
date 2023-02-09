@@ -8,7 +8,7 @@ def input_data():
 loop = input_data()
 
 #코드작성
-q = deque(loop)
+q = deque(loop)              
 depth = 0 
 
 def do_loop(depth): # < 다음부터 받음
