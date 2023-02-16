@@ -13,6 +13,7 @@ closes = []
 def find_land(r, c, num):
     close = []
     visited[r][c] = 1
+    A[r][c] = num #여기 초기화 안해줘서 섬크기1x1 일떄 안됐음
     for i in range(4):
         nr = r + dr[i]
         nc = c + dc[i]
@@ -26,26 +27,24 @@ def find_land(r, c, num):
                 close += find_land(nr,nc,num)
     return close
 
-# def get_distance(start,end): 
-#     global n,A
-#     q = deque([start])
-#     visited_b = [[0 for _ in range(n)] for _ in range(n)]
-#     visited_b[start[0]][start[1]] = 1
-#     while q:
-#         r,c = q.popleft()
-#         for i in range(4):
-#             nr = r + dr[i]
-#             nc = c + dc[i]
-#             if 0 <= nr < n and 0 <= nc < n and visited_b[nr][nc] == 0:
-#                 if A[nr][nc] == 1:
-#                     if nr == end[0] and nc == end[1]:
-#                         visited_b[nr][nc] = visited_b[r][c] + 1
-#                         break
-#                 if A[nr][nc] == 0:
-#                     visited_b[nr][nc] = visited_b[r][c] + 1
-#                     q.append((nr,nc))
+def get_distance(q, val): 
+    global n,A
+    res = 1e9
+    visited_b = [[0 for _ in range(n)] for _ in range(n)]
+    while q:
+        r,c = q.popleft()
+        for i in range(4):
+            nr = r + dr[i]
+            nc = c + dc[i]
+            if 0 <= nr < n and 0 <= nc < n and visited_b[nr][nc] == 0:
+                if A[nr][nc] < val:
+                    visited_b[nr][nc] = visited_b[r][c]
+                    res = min(res, visited_b[nr][nc])
+                if A[nr][nc] == 0:
+                    visited_b[nr][nc] = visited_b[r][c] + 1
+                    q.append((nr,nc))
 
-#     return visited_b[end[0]][end[1]] -2
+    return res
 
 num = -1
 for r in range(n):
@@ -65,22 +64,28 @@ for r in range(n):
 land_cnt = len(closes)
 min_dis = 1e9
 
-# for i in range(land_cnt): # 섬갯수만큼
-#     # 더 큰 인덱스 (더 작은 음수 값) 에 대해서만 탐색
-#     for 
-
-for land_pair in combinations(closes, 2): # 섬 중에 2개 쌍
-    close1, close2 = land_pair
-    for a in close1 : 
-        for b in close2:
-            # 섬 별 close 중 2개로  a ~ b 최단거리 구하기
-            # print(a,b)
-            dis = abs(a[0]-b[0]) + abs(a[1]-b[1]) -1
-            min_dis = min(min_dis, dis)
+for i in range(land_cnt): # 섬갯수만큼
+    # 더 큰 인덱스 (더 작은 음수 값) 에 대해서만 탐색
+    # for point in closes[i]:
+    #     # 섬 별 close 중 2개로  a ~ b 최단거리 구하기
+    #     # print(a,b)
+    point = deque(closes[i]) #한 섬 전체를 큐에 넣어서 bfs
+    dis = get_distance(point, -(i+1))
+    # print(-(i+1), dis)
+    min_dis = min(min_dis, dis)
 
 print(min_dis)
 
 
+    # for land_pair in combinations(closes, 2): # 섬 중에 2개 쌍
+    #     close1, close2 = land_pair
+    #     for a in close1 : 
+    #         for b in close2:
+    #             # 섬 별 close 중 2개로  a ~ b 최단거리 구하기
+    #             # print(a,b)
+    #             dis = abs(a[0]-b[0]) + abs(a[1]-b[1]) -1
+    #             min_dis = min(min_dis, dis)
+# print(min_dis)
 
 
 # 시간초과 BFS
