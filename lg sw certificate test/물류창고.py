@@ -30,6 +30,6 @@ for k in range(1, N+1):
 min_far_dis = 1e9
 for i in range(1, N+1):
 	min_far_dis = min(min_far_dis, max(dp[i][1:]))
-	
+	 
 # 출력하는 부분
 print(min_far_dis)
