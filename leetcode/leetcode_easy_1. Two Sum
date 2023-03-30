@@ -1,0 +1,23 @@
+# 이진탐색 썼는데
+# for i in range(n) 하면서 target-arr[i] 인 원소 있는지 찾는게 사람들답
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        nums_arr = [(i, num) for i, num in enumerate(nums)]
+        nums_arr = sorted(nums_arr, key=lambda x: x[1])
+
+        l, r = 0, len(nums)-1
+        ans = [l, r]
+        while l <= r:
+            sum_val = nums_arr[l][1] + nums_arr[r][1]
+            if sum_val == target:
+                return [nums_arr[l][0], nums_arr[r][0]]
+            elif sum_val >= target:
+                r -= 1
+            else:
+                l += 1
